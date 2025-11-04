@@ -8,6 +8,7 @@ type GenreButtonPropsType = {
 export const GenreButton = ({genre} : GenreButtonPropsType) => {
   return (
     <Button
+      sx={{ width: '300px', flex: '0 0 auto' }}
       variant='contained'
     >{genre?.name}</Button>
   )
