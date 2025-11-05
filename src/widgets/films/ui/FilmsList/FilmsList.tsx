@@ -2,10 +2,15 @@ import { Box, Card } from '@mui/material'
 import React from 'react'
 import { FilmCard, useGetFilmsQuery } from '../../../../entities/films'
 import { AddToFavorite } from '../../../../features/AddToFavorite/ui/AddToFavorite'
+import { useFavoriteFilms } from '../../../../features/AddToFavorite'
 
 export const FilmsList = () => {
     const { films, isPending } = useGetFilmsQuery()
 
+
+    // const favFilms = useFavoriteFilms()
+
+    
     return (
         <Box>
 
