@@ -1,13 +1,16 @@
-import { Box, Card } from '@mui/material'
+import { Box, Button, Card } from '@mui/material'
 import React from 'react'
 import { FilmCard, useGetFilmsQuery } from '../../../../entities/films'
 import { AddToFavorite } from '../../../../features/AddToFavorite/ui/AddToFavorite'
 import { useFavoriteFilms } from '../../../../features/AddToFavorite'
+import { useGetFilmScrollQuery } from '../../../../entities/films/model/hooks/useGetFiilmScrollQuery'
 
 export const FilmsList = () => {
-    const { films, isPending } = useGetFilmsQuery()
+    // const { films, isPending } = useGetFilmsQuery()
 
+    const {data : films, fetchNextPage} = useGetFilmScrollQuery()
 
+    
     // const favFilms = useFavoriteFilms()
 
     
@@ -32,6 +35,7 @@ export const FilmsList = () => {
                     ))
                 }
             </Box>
+            <button onClick={() => fetchNextPage()}>Next</button>
 
         </Box>
     )
