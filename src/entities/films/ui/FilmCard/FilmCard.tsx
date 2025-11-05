@@ -14,6 +14,16 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import type { IFilms } from '../../../../shared/types';
+
+
+const imgUrl = "https://image.tmdb.org/t/p/w500/"
+
+
+
+type FilmCardPropsType = {
+  film : IFilms
+}
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -43,7 +53,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   ],
 }));
 
-export function FilmCard() {
+export function FilmCard({film} : FilmCardPropsType) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -51,51 +61,54 @@ export function FilmCard() {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <>
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        
+        title="Realse Date : "
+        subheader={film?.release_date}
       />
       <CardMedia
         component="img"
-        height="194"
-        image="/static/images/cards/paella.jpg"
+        height="70%"
+        image={imgUrl + film?.poster_path}
         alt="Paella dish"
       />
       <CardContent>
+
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
+         {
+          film?.overview
+         }
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+    </>
+  );
+}
+
+
+
+
+
+
+
+
+ {/* <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
+        </IconButton> */}
+        {/* <IconButton aria-label="share">
           <ShareIcon />
-        </IconButton>
-        <ExpandMore
+        </IconButton> */}
+        {/* <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
         >
           <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        </ExpandMore> */}
+      {/* </CardActions> */}
+      {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography sx={{ marginBottom: 2 }}>Method:</Typography>
           <Typography sx={{ marginBottom: 2 }}>
@@ -123,7 +136,4 @@ export function FilmCard() {
             Set aside off of the heat to let rest for 10 minutes, and then serve.
           </Typography>
         </CardContent>
-      </Collapse>
-    </Card>
-  );
-}
+      </Collapse> */}
