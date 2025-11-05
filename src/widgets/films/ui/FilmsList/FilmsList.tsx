@@ -22,7 +22,7 @@ export const FilmsList = () => {
                     films?.map((film) => (
                         <Card sx={{ maxWidth: 345 }} key={film.id}>
                             <FilmCard film={film}/>
-                            <AddToFavorite />
+                            <AddToFavorite film={film}/>
                         </Card>
                     ))
                 }
