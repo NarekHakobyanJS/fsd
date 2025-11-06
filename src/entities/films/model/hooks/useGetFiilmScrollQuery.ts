@@ -3,8 +3,7 @@ import { filmsAPI } from "../../api/filmsApi"
 
 const useGetFilmScrollQuery = () => {
 
-    // {pageParams : [1], pages : [reqData]}
-    const {data, fetchNextPage} = useInfiniteQuery({
+    const {data, fetchNextPage, hasNextPage, isFetchingNextPage} = useInfiniteQuery({
         queryKey : ['films'],
         queryFn : (meta) =>  filmsAPI.getFilms(meta.pageParam),
         initialPageParam : 1,
@@ -12,7 +11,7 @@ const useGetFilmScrollQuery = () => {
         select : (result) => result.pages.map((el) => el.results).flat()
     })
 
-    return {data, fetchNextPage}
+    return {data, fetchNextPage, hasNextPage, isFetchingNextPage}
     
 }
 

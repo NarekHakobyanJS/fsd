@@ -1,17 +1,18 @@
 import { Box, Button, Card } from '@mui/material'
 import React from 'react'
-import { FilmCard, useGetFilmsQuery } from '../../../../entities/films'
+import { FilmCard, useGetFilmsQuery, useInterSection } from '../../../../entities/films'
 import { AddToFavorite } from '../../../../features/AddToFavorite/ui/AddToFavorite'
 import { useFavoriteFilms } from '../../../../features/AddToFavorite'
 import { useGetFilmScrollQuery } from '../../../../entities/films/model/hooks/useGetFiilmScrollQuery'
 
 export const FilmsList = () => {
-    // const { films, isPending } = useGetFilmsQuery()
+    const {data : films, fetchNextPage, hasNextPage, isFetchingNextPage} = useGetFilmScrollQuery()
 
-    const {data : films, fetchNextPage} = useGetFilmScrollQuery()
-
+    ///Config Hook from entites
+    const cursorRef = useInterSection(() => {
+        fetchNextPage()
+    })
     
-    // const favFilms = useFavoriteFilms()
 
     
     return (
@@ -35,7 +36,11 @@ export const FilmsList = () => {
                     ))
                 }
             </Box>
-            <button onClick={() => fetchNextPage()}>Next</button>
+            <Button 
+            variant='contained'
+            ref={cursorRef}
+            sx={{width : '100%', height : '70px', color : 'black'}}
+            >{isFetchingNextPage && 'Loading ...'}</Button>
 
         </Box>
     )
