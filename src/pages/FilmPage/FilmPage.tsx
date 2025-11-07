@@ -8,10 +8,8 @@ import Typography from '@mui/material/Typography';
 import { FilmContent, FilmMedia, useGetFilmById } from '../../entities/filmById'
 import { useParams } from 'react-router-dom'
 import { Box, Container } from '@mui/material';
+import { FilmDescription } from '../../widgets/film/ui';
 
-
-
-const imgUrl = "https://image.tmdb.org/t/p/w500/"
 
 
 
@@ -24,22 +22,7 @@ export const FilmPage = () => {
 
   return (
     <Container maxWidth='xl' fixed={true}>
-
-      {/* Widgets */}
-      <Card
-        sx={{ display: 'flex', justifyContent: 'space-around', gap: '30px' }}
-      >
-
-        <FilmMedia poster={imgUrl + film?.poster_path} />
-
-        <Box
-          sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: '40px' }}
-        >
-
-          <FilmContent film={film} />
-          <Button sx={{ width: '350px' }} variant={'contained'}>View Trailer</Button>
-        </Box>
-      </Card>
+     <FilmDescription film={film}/>
     </Container>
 
   )
