@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import { viewAndHideTrailerModal } from '../model/vireTrailerHelpers'
+import { viewAndHideTrailerModal } from '../model/viewTrailerHelpers'
 import { useIsOpenAndCloseModal } from '../model/viewTrailerSelector'
 
 
