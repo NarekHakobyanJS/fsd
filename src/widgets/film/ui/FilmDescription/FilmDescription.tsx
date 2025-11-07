@@ -1,6 +1,7 @@
 import { Box, Button, Card } from '@mui/material'
 import { FilmContent, FilmMedia } from '../../../../entities/filmById'
 import type { IFilms } from '../../../../shared/types'
+import { ViewTrailer } from '../../../../features/ViewTrailer/ui/ViewTrailer'
 
 
 const imgUrl = "https://image.tmdb.org/t/p/w500/"
@@ -23,7 +24,7 @@ export const FilmDescription = ({film} : FilmDescriptionPropsType) => {
     >
 
       <FilmContent film={film} />
-      <Button sx={{ width: '350px' }} variant={'contained'}>View Trailer</Button>
+      <ViewTrailer />
     </Box>
   </Card>
   )
