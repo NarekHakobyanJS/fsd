@@ -1,8 +1,6 @@
 import { Box, Button, Card } from '@mui/material'
-import React from 'react'
-import { FilmCard, useGetFilmsQuery, useInterSection } from '../../../../entities/films'
+import { FilmCard, useInterSection } from '../../../../entities/films'
 import { AddToFavorite } from '../../../../features/AddToFavorite/ui/AddToFavorite'
-import { useFavoriteFilms } from '../../../../features/AddToFavorite'
 import { useGetFilmScrollQuery } from '../../../../entities/films/model/hooks/useGetFiilmScrollQuery'
 
 export const FilmsList = () => {
@@ -12,9 +10,7 @@ export const FilmsList = () => {
     const cursorRef = useInterSection(() => {
         fetchNextPage()
     })
-    
-
-    
+     
     return (
         <Box>
 
