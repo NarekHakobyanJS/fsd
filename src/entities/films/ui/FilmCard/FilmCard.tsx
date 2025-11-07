@@ -15,6 +15,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import type { IFilms } from '../../../../shared/types';
+import { NavLink } from 'react-router-dom';
 
 
 const imgUrl = "https://image.tmdb.org/t/p/w500/"
@@ -75,9 +76,13 @@ export function FilmCard({film} : FilmCardPropsType) {
       />
       <CardContent>
 
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography 
+        component={NavLink}
+        to={`/${film?.id}`}
+        variant="h5" 
+        sx={{ color: 'text.secondary' }}>
          {
-          film?.overview
+          film?.title
          }
         </Typography>
       </CardContent>
