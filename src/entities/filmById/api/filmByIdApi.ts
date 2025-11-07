@@ -7,6 +7,12 @@ const filmByIdApi = {
         const resposne = await axiosConfig.get<IFilms>(`/movie/${id}?api_key=${apiKey}&language=en-US`)
 
         return resposne.data
+    },
+
+    async getTrailer(movieId : string | undefined){
+        const resposne = await axiosConfig.get(`/movie/${movieId}/videos?language=en-US`)
+        
+        return resposne.data
     }
 }
 
