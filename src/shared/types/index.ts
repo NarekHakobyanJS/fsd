@@ -21,4 +21,12 @@ export interface IFilms {
     vote_count : number
 }
 
-export type {IGenre}
+
+interface IGetFilmsResponseType {
+    page : number
+    results : IFilms [] 
+    total_pages : number,
+    total_results : number
+  }
+
+export type {IGenre, IGetFilmsResponseType}

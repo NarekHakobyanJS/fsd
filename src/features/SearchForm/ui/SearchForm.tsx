@@ -3,12 +3,19 @@ import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import { changeInputText } from '../model/searchFormHelpers';
+import { changeInputText, openAndCloseResult } from '../model/searchFormHelpers';
 
 type SearchFormPropsType = {
-  inputText : string
+  inputText : string,
+  refetch : () => void
 }
-export const SearchForm = ({inputText} : SearchFormPropsType) => {
+export const SearchForm = ({inputText, refetch} : SearchFormPropsType) => {
+  
+
+  const handleSearch = () => {
+    refetch()
+    openAndCloseResult(true)
+  }
   
   return (
     <Paper
@@ -24,7 +31,7 @@ export const SearchForm = ({inputText} : SearchFormPropsType) => {
     />
     <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
     <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-      <SearchIcon />
+      <SearchIcon onClick={handleSearch}/>
     </IconButton>
     
   </Paper>
