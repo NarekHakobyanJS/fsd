@@ -1,8 +1,9 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { viewAndHideTrailerModal } from '../../../../features/ViewTrailer/model/viewTrailerHelpers';
 import { useGetTrailer } from '../../../../entities/filmById';
+import { useQueryClient } from '@tanstack/react-query';
 
 const style = {
   position: 'absolute',
@@ -21,11 +22,19 @@ type ViewTrailerModalPropsType = {
     id : string | undefined
 }
 
-// isModal
 export function ViewTrailerModal({isModal, id} : ViewTrailerModalPropsType) {
+    //1
+    const clientFromUseQueeryClient = useQueryClient()
     const iframeRef = useRef(null)
 
     useGetTrailer(id, iframeRef)
+
+    //2
+    useEffect(() => {
+      return () => {
+        clientFromUseQueeryClient.removeQueries({queryKey : ['viewTrailer', id]})
+      }
+    }, [])
   return (
     <div>
       <Modal
