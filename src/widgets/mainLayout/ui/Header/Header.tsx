@@ -1,6 +1,7 @@
 
 import { GenreButton, GenreButtonSkeleton, useGetGenresQuery } from '../../../../entities/genres'
 import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material'
+import { SearchBlock } from '../SearchBlock/SearchBlock'
 
 export const Header = () => {
   const { genres, isPending } = useGetGenresQuery()
@@ -8,7 +9,7 @@ export const Header = () => {
   return (
     <AppBar position='sticky' sx={{mb : '30px'}}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ display: "flex", justifyContent: 'space-between', alignItems: 'center' }}>
+        <Toolbar disableGutters sx={{ display: "flex", justifyContent: 'space-between', alignItems: 'center', gap : '30px' }}>
         <Typography
             variant="h5"
           >
@@ -38,7 +39,7 @@ export const Header = () => {
           </Box>
 
           <Box>
-            
+          < SearchBlock />
           </Box>
         </Toolbar>
       </Container>
